@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bantay App - Figma Design Reference</title>
+  <style>
+    /* ==========================================
+       1. CANVAS & LAYOUT STYLES
+       ========================================== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
+      background-color: #1e1e24; /* Figma Canvas background */
+      color: #ffffff;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 1300px; /* Ensures all 4 screens stay side-by-side */
+    }
+
+    .main-title {
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: #a1a1aa;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .section-title {
+      width: 100%;
+      max-width: 1240px;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #3f3f46;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .section-title.hifi { color: #38bdf8; }
+    .section-title.lofi { color: #a1a1aa; margin-top: 50px; }
+
+    /* Row layout to hold 4 mobile frames side-by-side */
+    .row-container {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      width: 100%;
+      max-width: 1240px;
+    }
+
+    /* Mobile Phone Canvas Frame */
+    .phone-frame {
+      width: 290px;
+      height: 580px;
+      border-radius: 32px;
+      padding: 20px 14px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      flex-shrink: 0;
+      box-sizing: border-box;
+    }
+
+    .frame-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    /* Bottom Navigation Bar Inside Mobile Mockups */
+    .phone-nav {
+      height: 48px;
+      margin-top: auto;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      border-radius: 16px;
+    }
+
+
+    /* ==========================================
+       2. HIGH-FIDELITY STYLING (TOP ROW)
+       ========================================== */
+    .hi-fi-frame {
+      background-color: #f8fafc;
+      border: 4px solid #334155;
+      color: #0f172a;
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    .hi-fi-frame .frame-label { color: #0284c7; }
+
+    .hi-fi-frame .phone-nav {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+    }
+
+    .hi-fi-nav-item {
+      font-size: 10px;
+      font-weight: 700;
+      color: #64748b;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hi-fi-nav-item.active { color: #0284c7; }
+
+    .hi-fi-card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 10px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 10px;
+      font-size: 9px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .badge-critical { background: #fee2e2; color: #dc2626; }
+    .badge-warning  { background: #ffedd5; color: #ea580c; }
+    .badge-safe     { background: #dcfce7; color: #16a34a; }
+
+    .hi-fi-btn {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      font-weight: 700;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .btn-danger { background: #dc2626; color: white; }
+    .btn-success { background: #16a34a; color: white; }
+    .btn-primary { background: #0284c7; color: white; }
+
+
+    /* ==========================================
+       3. LOW-FIDELITY WIREFRAME STYLING (BOTTOM ROW)
+       ========================================== */
+    .lo-fi-frame {
+      background-color: #ffffff;
+      border: 3px solid #64748b;
+      color: #334155;
+      font-family: 'Courier New', Courier, monospace;
+    }
+
+    .lo-fi-frame .frame-label { color: #64748b; }
+
+    .lo-fi-frame .phone-nav {
+      border: 2px dashed #94a3b8;
+      background: #f8fafc;
+    }
+
+    .lo-fi-nav-item {
+      width: 20px;
+      height: 20px;
+      border: 2px solid #64748b;
+      background: #e2e8f0;
+    }
+
+    .wire-box {
+      border: 2px solid #64748b;
+      padding: 10px;
+      margin-bottom: 10px;
+      background: #ffffff;
+    }
+
+    .wire-image-placeholder {
+      width: 100%;
+      height: 90px;
+      border: 2px solid #94a3b8;
+      background: 
+        linear-gradient(to top right, transparent calc(50% - 1px), #94a3b8 , transparent calc(50% + 1px)),
+        linear-gradient(to bottom right, transparent calc(50% - 1px), #94a3b8 , transparent calc(50% + 1px));
+      background-color: #f1f5f9;
+      margin-bottom: 8px;
+    }
+
+    .wire-line {
+      height: 8px;
+      background: #cbd5e1;
+      margin-bottom: 6px;
+    }
+    .wire-line.short { width: 40%; }
+    .wire-line.medium { width: 70%; }
+
+    .wire-btn {
+      width: 100%;
+      padding: 8px;
+      border: 2px solid #334155;
+      background: #e2e8f0;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 class="main-title">Bantay — IT211 Safety & Emergency Concept</h1>
+  <p class="subtitle">Complete Figma UI Design Reference: High-Fidelity & Low-Fidelity Layouts</p>
+
+  <!-- =======================================================
+       TOP ROW: HIGH-FIDELITY PROTOTYPE SCREENS
+       ======================================================= -->
+  <div class="section-title hifi">
+    <span>02 - High-Fidelity UI Screens</span>
+    <span style="font-size: 12px; font-weight: normal; color: #a1a1aa;">Polished UI • Color Hierarchy • Typography</span>
+  </div>
+
+  <div class="row-container">
+    
+    <!-- Hi-Fi Screen 1: Alert Feed -->
+    <div class="phone-frame hi-fi-frame">
+      <div class="frame-label">1. Alert Feed / Home</div>
+      
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+        <h2 style="font-size: 16px; font-weight: 800;">Campus Alerts</h2>
+        <span style="font-size: 10px; color: #64748b;">IT211 Section A</span>
+      </div>
+
+      <div class="hi-fi-card" style="border-left: 4px solid #dc2626;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+          <span class="badge badge-critical">CRITICAL</span>
+          <span style="font-size: 9px; color: #94a3b8;">10m ago</span>
+        </div>
+        <h3 style="font-size: 13px; margin-bottom: 4px;">Typhoon Signal No. 3</h3>
+        <p style="font-size: 11px; color: #64748b; line-height: 1.3;">Heavy rain & severe winds expected within campus area.</p>
+      </div>
+
+      <div class="hi-fi-card" style="border-left: 4px solid #ea580c;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+          <span class="badge badge-warning">WARNING</span>
+          <span style="font-size: 9px; color: #94a3b8;">1h ago</span>
+        </div>
+        <h3 style="font-size: 13px; margin-bottom: 4px;">Class Suspension Notice</h3>
+        <p style="font-size: 11px; color: #64748b; line-height: 1.3;">All afternoon classes suspended by university administration.</p>
+      </div>
+
+      <div class="hi-fi-card" style="border-left: 4px solid #0284c7;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+          <span class="badge" style="background:#e0f2fe; color:#0284c7;">NOTICE</span>
+          <span style="font-size: 9px; color: #94a3b8;">2h ago</span>
+        </div>
+        <h3 style="font-size: 13px; margin-bottom: 4px;">Evacuation Center Open</h3>
+        <p style="font-size: 11px; color: #64748b; line-height: 1.3;">Main Gymnasium open for stranded students.</p>
+      </div>
+
+      <div class="phone-nav">
+        <div class="hi-fi-nav-item active"><span>🚨</span><span>Alerts</span></div>
+        <div class="hi-fi-nav-item"><span>🛡️</span><span>Check-In</span></div>
+        <div class="hi-fi-nav-item"><span>🗺️</span><span>Map</span></div>
+      </div>
+    </div>
+
+    <!-- Hi-Fi Screen 2: Safety Check-In -->
+    <div class="phone-frame hi-fi-frame">
+      <div class="frame-label">2. Safety Check-In</div>
+
+      <h2 style="font-size: 16px; font-weight: 800; margin-bottom: 10px;">Safety Status</h2>
+      
+      <div class="hi-fi-card" style="text-align: center; background: #f1f5f9;">
+        <p style="font-size: 11px; color: #475569; margin-bottom: 8px;">Tap your status to inform groupmates:</p>
+        <div style="display: flex; gap: 6px; margin-bottom: 6px;">
+          <div class="hi-fi-btn btn-success">✓ I'm Safe</div>
+          <div class="hi-fi-btn btn-danger">⚠ Need Help</div>
+        </div>
+      </div>
+
+      <h3 style="font-size: 12px; margin: 10px 0 6px; color: #475569;">IT211 Project Group</h3>
+      <div class="hi-fi-card" style="padding: 10px;">
+        <div style="display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 8px;">
+          <span>Juan Dela Cruz (You)</span>
+          <span class="badge badge-safe">SAFE</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 8px;">
+          <span>Maria Santos</span>
+          <span class="badge badge-safe">SAFE</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 11px;">
+          <span>Mark Reyes</span>
+          <span class="badge badge-critical">NEED HELP</span>
+        </div>
+      </div>
+
+      <div class="phone-nav">
+        <div class="hi-fi-nav-item"><span>🚨</span><span>Alerts</span></div>
+        <div class="hi-fi-nav-item active"><span>🛡️</span><span>Check-In</span></div>
+        <div class="hi-fi-nav-item"><span>🗺️</span><span>Map</span></div>
+      </div>
+    </div>
+
+    <!-- Hi-Fi Screen 3: Evacuation Map / Hotlines -->
+    <div class="phone-frame hi-fi-frame">
+      <div class="frame-label">3. Evacuation / Map</div>
+
+      <h2 style="font-size: 16px; font-weight: 800; margin-bottom: 10px;">Evacuation & Help</h2>
+      
+      <div style="width: 100%; height: 110px; background: #cbd5e1; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px;">
+        <span style="font-size: 10px; font-weight: bold; color: #1e293b; background: #ffffff; padding: 4px 8px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">📍 Nearest: Main Gym (250m)</span>
+      </div>
+
+      <h3 style="font-size: 12px; color: #475569; margin-bottom: 6px;">Emergency Hotlines</h3>
+      <div class="hi-fi-card" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+        <div>
+          <div style="font-size: 11px; font-weight: bold;">Campus Security</div>
+          <div style="font-size: 9px; color: #64748b;">(02) 8888-0000</div>
+        </div>
+        <div class="hi-fi-btn btn-primary" style="width: auto; padding: 4px 8px; font-size: 10px;">Call</div>
+      </div>
+
+      <div class="hi-fi-card" style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <div style="font-size: 11px; font-weight: bold;">Red Cross Campus</div>
+          <div style="font-size: 9px; color: #64748b;">143</div>
+        </div>
+        <div class="hi-fi-btn btn-primary" style="width: auto; padding: 4px 8px; font-size: 10px;">Call</div>
+      </div>
+
+      <div class="phone-nav">
+        <div class="hi-fi-nav-item"><span>🚨</span><span>Alerts</span></div>
+        <div class="hi-fi-nav-item"><span>🛡️</span><span>Check-In</span></div>
+        <div class="hi-fi-nav-item active"><span>🗺️</span><span>Map</span></div>
+      </div>
+    </div>
+
+    <!-- Hi-Fi Screen 4: Alert Detail -->
+    <div class="phone-frame hi-fi-frame">
+      <div class="frame-label">4. Alert Detail</div>
+
+      <span class="badge badge-critical" style="margin-bottom: 6px;">TYPHOON ALERT</span>
+      <h2 style="font-size: 16px; font-weight: 800; margin-bottom: 6px;">Signal No. 3 Details</h2>
+      <p style="font-size: 11px; color: #64748b; line-height: 1.4; margin-bottom: 10px;">
+        Signal No. 3 active. Flooding reported near Gate 2. Stay indoors.
+      </p>
+
+      <div class="hi-fi-card" style="margin-bottom: 12px;">
+        <h3 style="font-size: 11px; font-weight: bold; margin-bottom: 6px;">Action Steps:</h3>
+        <ul style="font-size: 10px; color: #334155; padding-left: 14px; line-height: 1.5;">
+          <li>Move to higher floors if near Gate 2.</li>
+          <li>Charge electronic devices immediately.</li>
+          <li>Update safety status for groupmates.</li>
+        </ul>
+      </div>
+
+      <div class="hi-fi-btn btn-primary">Check-In Now</div>
+
+      <div class="phone-nav">
+        <div class="hi-fi-nav-item active"><span>🚨</span><span>Alerts</span></div>
+        <div class="hi-fi-nav-item"><span>🛡️</span><span>Check-In</span></div>
+        <div class="hi-fi-nav-item"><span>🗺️</span><span>Map</span></div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- =======================================================
+       BOTTOM ROW: LOW-FIDELITY WIREFRAME SCREENS
+       ======================================================= -->
+  <div class="section-title lofi">
+    <span>01 - Low-Fidelity Wireframes</span>
+    <span style="font-size: 12px; font-weight: normal; color: #a1a1aa;">Grayscale Layout • Structure • Hierarchy</span>
+  </div>
+
+  <div class="row-container">
+    
+    <!-- Lo-Fi Screen 1: Alert Feed -->
+    <div class="phone-frame lo-fi-frame">
+      <div class="frame-label">1. Alert Feed (Wireframe)</div>
+      
+      <div style="font-weight: bold; margin-bottom: 8px; font-size: 11px;">[FEED] ACTIVE ALERTS</div>
+      
+      <div class="wire-box">
+        <div class="wire-line short"></div>
+        <div class="wire-line"></div>
+        <div class="wire-line medium"></div>
+        <div class="wire-btn" style="margin-top: 6px;">VIEW DETAILS</div>
+      </div>
+
+      <div class="wire-box">
+        <div class="wire-line short"></div>
+        <div class="wire-line"></div>
+      </div>
+
+      <div class="wire-box">
+        <div class="wire-line short"></div>
+        <div class="wire-line medium"></div>
+      </div>
+
+      <div class="phone-nav">
+        <div class="lo-fi-nav-item"></div>
+        <div class="lo-fi-nav-item"></div>
+        <div class="lo-fi-nav-item"></div>
+      </div>
+    </div>
+
+    <!-- Lo-Fi Screen 2: Safety Check-In -->
+    <div class="phone-frame lo-fi-frame">
+      <div class="frame-label">2. Safety Check-In (Wireframe)</div>
+
+      <div style="font-weight: bold; margin-bottom: 8px; font-size: 11px;">[CHECK-IN] STATUS</div>
+      
+      <div class="wire-box" style="text-align: center;">
+        <div class="wire-line medium" style="margin: 0 auto 8px;"></div>
+        <div class="wire-btn" style="margin-bottom: 6px;">[BTN] I'M SAFE</div>
+        <div class="wire-btn">[BTN] NEED HELP</div>
+      </div>
+
+      <div style="font-size: 10px; margin: 8px 0 4px; font-weight: bold;">IT211 GROUP LIST:</div>
+      <div class="wire-box">
+        <div class="wire-line"></div>
+        <div class="wire-line medium"></div>
+        <div class="wire-line"></div>
+      </div>
+
+      <div class="phone-nav">
+        <div class="lo-fi-nav-item"></div>
+        <div class="lo-fi-nav-item"></div>
+        <div class="lo-fi-nav-item"></div>
+      </div>
+    </div>
+
+    <!-- Lo-Fi Screen 3: Evacuation Map / Hotlines -->
+    <div class="phone-frame lo-fi-frame">
+      <div class="frame-label">3. Map & Hotlines (Wireframe)</div>
+
+      <div style="font-weight: bold; margin-bottom: 8px; font-size: 11px;">[MAP & RESOURCES]</div>
+      
+      <div class="wire-image-placeholder"></div>
+
+      <div style="font-size: 10px; font-weight: bold; margin-bottom: 4px;">HOTLINES LIST:</div>
+      <div class="wire-box"><div class="wire-line"></div></div>
+      <div class="wire-box"><div class="wire-line medium"></div></div>
+      <div class="wire-box"><div class="wire-line short"></div></div>
+
+      <div class="phone-nav">
+        <div class="lo-fi-nav-item"></div>
+        <div class="lo-fi-nav-item"></div>
+        <div class="lo-fi-nav-item"></div>
+      </div>
+    </div>
+
+    <!-- Lo-Fi Screen 4: Alert Detail -->
+    <div class="phone-frame lo-fi-frame">
+      <div class="frame-label">4. Alert Detail (Wireframe)</div>
+
+      <div style="font-weight: bold; margin-bottom: 8px; font-size: 11px;">[DETAIL] ALERT #102</div>
+      
+      <div class="wire-box">
+        <div class="wire-line"></div>
+        <div class="wire-line medium"></div>
+      </div>
+
+      <div style="font-size: 10px; font-weight: bold; margin-bottom: 4px;">ACTION STEPS:</div>
+      <div class="wire-box"><div class="wire-line"></div></div>
+      <div class="wire-box"><div class="wire-line medium"></div></div>
+
+      <div class="wire-btn" style="margin-top: 10px;">CHECK-IN NOW</div>
+
+      <div class="phone-nav">
+        <div class="lo-fi-nav-item"></div>
+        <div class="lo-fi-nav-item"></div>
+        <div class="lo-fi-nav-item"></div>
+      </div>
+    </div>
+
+
+</body>
+</html>
